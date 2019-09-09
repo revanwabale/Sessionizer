@@ -36,4 +36,20 @@ output --> 'pay/longestSessionTimePerIp'
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+# Codebase illustration :
+
+
+java class name for junit cases for udf  : package name =  pigUDFTest.SessionizerTest.java  
+java class name for sessionizer udf  : package name =  pigUDF.Sessionizer.java
+necessary jar files for pig & Java dependencies :  direcory name = jars
+pig file name : paypay.pig
+
+run in local mode:
+nohup pig -useHCatalog -x local -f paypay.pig > local_log 2>&1 &
+
+run in tez_local mode:
+nohup pig -useHCatalog -x tex_local -f paypay.pig > local_log 2>&1 &
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
