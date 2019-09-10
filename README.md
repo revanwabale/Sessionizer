@@ -11,27 +11,27 @@
 
 1. Sessionize the web log by IP. Sessionize = aggregrate all page hits by visitor/IP during a session. https://en.wikipedia.org/wiki/Session_(web_analytics) :
 
-output --> 'paypayAcc/sessionizer'
+ output --> 'paypayAcc/sessionizer'
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 2. Determine the average session time:
 
-output --> 'paypayAcc/session_time_per_ip_per_session'
+ output --> 'paypayAcc/session_time_per_ip_per_session'
 
-output --> 'paypayAcc/avgSessionTimePerIp'
+ output --> 'paypayAcc/avgSessionTimePerIp'
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 3. Determine unique URL visits per session. To clarify, count a hit to a unique URL only once per session:
 
-output --> 'paypayAcc/hitCnt_per_Disturl_per_session'
+ output --> 'paypayAcc/hitCnt_per_Disturl_per_session'
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 4. Find the most engaged users, ie the IPs with the longest session times:
 
-output --> 'paypayAcc/longestSessionTimePerIp'
+ output --> 'paypayAcc/longestSessionTimePerIp'
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Codebase illustration :
@@ -48,6 +48,7 @@ Pig file name : paypay_sessionizerAcc.pig
 
 # To Run The Script, Do the following preparation:
 hadoop fs -mkdir -p hdfs:///paypay/
+
 hadoop fs -put 2015_07_22_mktplace_shop_web_log_sample.log.gz hdfs:///paypay/
 
 # Modify the Variable in Pig script for hdfs file path of WebLog:
