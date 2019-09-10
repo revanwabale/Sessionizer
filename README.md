@@ -38,19 +38,34 @@ output --> 'paypayAcc/longestSessionTimePerIp'
 
 Java Project name : pigUDF
 
-java class name for junit cases for udf  : package name =  pigUDFTest.SessionizerTest.java  
+Java class name for junit cases for udf  : package name =  pigUDFTest.SessionizerTest.java  
 
-java class name for sessionizer udf  : package name =  pigUDF.SessionizerAcc.java
+Java class name for sessionizer udf  : package name =  pigUDF.SessionizerAcc.java
 
-necessary jar files for pig & Java dependencies :  direcory name = jars
+Necessary jar files for pig & Java dependencies :  direcory name = jars
 
-pig file name : paypay_sessionizerAcc.pig
+Pig file name : paypay_sessionizerAcc.pig
 
-> run in local mode:
-nohup pig -useHCatalog -x local -f paypay_sessionizerAcc.pig > paypay_sessionizerAcc_local_log 2>&1 &
+## To Run The Script, Do the following preparation:
+hadoop fs -mkdir -p hdfs:///paypay/
+hadoop fs -put 2015_07_22_mktplace_shop_web_log_sample.log.gz hdfs:///paypay/
 
-> run in tez cluster mode:
-nohup pig -useHCatalog -x tez -f paypay_sessionizerAcc.pig > paypay_sessionizerAcc_cluster_log 2>&1 &
+# Modify the Variable in Pig script for hdfs file path of WebLog:
+LOG_FILE_HDFS_PATH='hdfs:///paypay/2015_07_22_mktplace_shop_web_log_sample.log.gz'
+
+# run in local mode:
+nohup pig -x local -f paypay_sessionizerAcc.pig > paypay_sessionizerAcc_local_log 2>&1 &
+
+# run in tez cluster mode:
+nohup pig -x tez -f paypay_sessionizerAcc.pig > paypay_sessionizerAcc_cluster_log 2>&1 &
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Log File generated for 10,000 records only --> paypay_sessionizerAcc_cluster_10000RecordsOnly_log
+Log File generated for all records  --> paypay_sessionizerAcc_cluster_log
+
+# Note: directory -> paypayAcc, only contains the sample output generated for 10,000 records due to github file size issue.
+
+
+
